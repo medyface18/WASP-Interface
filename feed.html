@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Register</title>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='templates/css') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+      <style>
+body {font-family: Arial, Helvetica, sans-serif;}
+*{
+padding: 0;
+  margin: 0;
+}
+
+nav {
+  background-color:#0797E3;
+  height: 40px;
+}
+
+
+li a{
+ text-decoration: none;
+ color: #ffffff;
+ line-height: 40px;
+ display: block;
+}
+
+li a:hover{
+  background-color: #9CA5EE;
+  color: #ffffff;
+}
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+/* Set a style for all buttons */
+button {
+  background-color: #04AA6D;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+  width: auto;
+  padding: 10px 18px;
+  background-color: #f44336;
+}
+
+/* Center the image and position the close button */
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+  position: relative;
+}
+
+img.avatar {
+  width: 40%;
+  border-radius: 50%;
+}
+
+.container {
+  padding: 16px;
+}
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  padding-top: 60px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button (x) */
+.close {
+  position: absolute;
+  right: 25px;
+  top: 0;
+  color: #000;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: red;
+  cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)}
+  to {-webkit-transform: scale(1)}
+}
+
+@keyframes animatezoom {
+  from {transform: scale(0)}
+  to {transform: scale(1)}
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+     display: block;
+     float: none;
+  }
+  .cancelbtn {
+     width: 100%;
+  }
+}
+    </style>
+  </head>
+  <body>
+    <script src="script.js"></script>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" style="font-family: Alga Variable" href="home.html">WASP</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+
+      <li class="nav-item">
+        <a style="font-family: Karol" class="nav-link " href="{{url_for('feed')}}">Feed<span class="sr-only">current</span></a>
+      </li>
+      <li class="nav-item">
+        <a style="font-family: Karol" class="nav-link " href="{{url_for('search')}}">Search<span class="sr-only">current</span></a>
+      </li>
+      <li class="nav-item">
+        <a style="font-family: Karol" class="nav-link " href="{{url_for('post')}}">Post<span class="sr-only">current</span></a>
+      </li>
+
+      <li class="nav-item">
+        <a style="font-family: Karol" class="nav-link " style=font-family="Karol" href="{{url_for('security')}}">Incidents<span class="sr-only">current</span></a>
+      </li>
+
+      <li class="nav-item">
+        <a style="font-family: Karol" class="nav-link " href="{{url_for('profile')}}">My Profile<span class="sr-only">current</span></a>
+      </li>
+
+    </ul>
+  </div>
+</nav>
+
+
+<!--
+      <table border = 1>
+         <thead>
+            <td>ID</td>
+            <td>Name</td>
+            <td>Location</td>
+            <td>Category</td>
+            <td>Hours</td>
+
+         </thead>
+
+         {% for row in rows %}
+            <tr>
+               <td>{{row["ID"]}}</td>
+                <td>{{row['Name']}}</td>
+               <td>{{row["Location"]}}</td>
+               <td> {{ row["Category"]}}</td>
+               <td>{{row['Hours']}}</td>
+
+            </tr>
+         {% endfor %}
+      </table>
+      -->
+      <h1 style="text-align:center;margin-top:3%;font-size:100px">
+    <p style="font-family: Karol" class="text-secondary">Post Feed</p>
+  </h1>
+<form action="{{ url_for('showcomments')}}" method="post">
+<div class="form-group" style ="text-align:center;">
+
+
+  <label style="display:block"  style="text-align:center" for="firstname" ><b>If you want to view comments, enter in the name of the post:</b></label>
+  <input style="text-align: center" type="text" id="firstname" name="fname" placeholder="Enter ID">
+  </div>
+      <form style="width:auto" action="/index" class="inline">
+      </div>
+<div class="form-group" style ="text-align:center;">
+<button type="submit" class="center" style="width:auto">Submit</button>
+</div>
+</form>
+<div  style = "margin-left: auto;margin-right:auto;margin-top:40px;width:80%" >
+    {% for row in rows %}
+<div class="jumbotron">
+  <h1 class="display-4">
+  <text y="40">{{row['title']}}</text>
+  </h1>
+  <p class="lead">ID:{{row['postID']}}</p>
+  <hr class="my-4">
+  <p>{{row["content"]}}</p>
+
+</div>
+  {% endfor %}
+</div>
+
+
+
+
+<!--
+<div class = "row" style = "margin-top:60px;margin-left:40px">
+<div class="card col-sm-3" style="margin-left:80px; margin-right: 60px;height:60%">
+  <img src="images/cardlogin.svg" class="card-img-top" alt="..." style = "margin-top:38px">
+  <div class="card-body">
+    <div style = "margin-top:20px"></div>
+    <h5 class="card-title">Log-in/Registration</h5>
+    <p class="card-text">Upon creating an account, users' responses to the forms will be stored in a database. Registration consists of four steps, including the user's first and last name, e-mail address and phone number, birthdate, username, and password. </p>
+    <a href="login.html" class="btn btn-primary">Log in</a>
+    <a href="signUp.html" class="btn btn-secondary">Registration</a>
+</div>
+</div>
+<div class="card col-sm-3" style= "margin-right:60px;height:60%">
+  <img src="images/carddash.svg" class="card-img-top" alt="..." style = "margin-top:32px">
+  <div class="card-body">
+    <h5 class="card-title">Classes/Pods/Temperature</h5>
+    <p class="card-text">After signing in, users can create pods by inputting the names and grade of their fellow classmates/groupmates into a form. If students wish to travel to each other's houses, mainting social distancing, of course, everyone will be required to log their temperatures. The entire pod's temperatures will be put on display on the dashboard. Additionally, students  can  deliver information amongst each other by writing the main class focus. Users can also fill out  a to-do form for students to log the activities  they need to finish. All the data will be stored and saved. </p>
+    <a href="dashboard.html" class="btn btn-primary">Dashboard</a>
+</div>
+</div>
+<div class="card col-sm-3" style= "margin-right:60px ">
+  <img src="images/cardtutor.svg" class="card-img-top" alt="..." style = "height:200px;margin-top:30px">
+  <div class="card-body">
+    <h5 class="card-title">Find a Tutor</h5>
+    <p class="card-text">steps here</p>
+    <a href="#" class="btn btn-primary">Tutors</a>
+</div>
+</div>
+-->

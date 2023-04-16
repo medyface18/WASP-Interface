@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+
+   <head>
+
+     <style>
+body {font-family: Arial, Helvetica, sans-serif;}
+*{
+padding: 0;
+  margin: 0;
+}
+
+nav {
+  background-color:#0797E3;
+  height: 40px;
+}
+
+
+li a{
+ text-decoration: none;
+ color: #ffffff;
+ line-height: 40px;
+ display: block;
+}
+
+li a:hover{
+  background-color: #9CA5EE;
+  color: #ffffff;
+}
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+/* Set a style for all buttons */
+button {
+  background-color: #04AA6D;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+  width: auto;
+  padding: 10px 18px;
+  background-color: #f44336;
+}
+
+/* Center the image and position the close button */
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+  position: relative;
+}
+
+img.avatar {
+  width: 40%;
+  border-radius: 50%;
+}
+
+.container {
+  padding: 16px;
+}
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  padding-top: 60px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button (x) */
+.close {
+  position: absolute;
+  right: 25px;
+  top: 0;
+  color: #000;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: red;
+  cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)}
+  to {-webkit-transform: scale(1)}
+}
+
+@keyframes animatezoom {
+  from {transform: scale(0)}
+  to {transform: scale(1)}
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+     display: block;
+     float: none;
+  }
+  .cancelbtn {
+     width: 100%;
+  }
+}
+</style>
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYRXPxAjedAvfrJeTP-zNozFaZTOhRN60&callback=myMap"></script>
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='style.css') }}">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap" rel="stylesheet">
+      <script>
+         function loadMap() {
+
+            var mapOptions = {
+               center:new google.maps.LatLng(38, -120), //center of the map
+               zoom:5
+            }
+
+            var map = new google.maps.Map(document.getElementById("sample"),mapOptions);
+            var infoWindow = new google.maps.InfoWindow(), marker, i;
+            var markers = [[37.302427194938765, -122.0049226032319], [37.30310324277993, -122.0046726327116], [37.30421160541136, -122.00425170990164], [37.304939685391886, -122.00384605029903], [37.30399648952263, -122.00436612671265], [37.304823854957405, -122.0030243295655], [37.302176253524074, -122.004990218409], [37.304939685391886, -122.00384605029903], [37.30399648952263, -122.00436612671265], [37.304823854957405, -122.0030243295655], [37.302176253524074, -122.004990218409], [37.30518208024168, -122.00285136138206], [37.30584539179516, -122.00264036990212], [37.306396815018196, -122.00240928399558], [37.30392586294262, -122.00332748321884], [37.30713963549407, -122.00214497282761], [37.30689662003141, -122.00220488499541], [37.307810834424714, -122.00189043111422], [37.30864741708742, -122.0015542907571], [37.30841455480691, -122.00169525284235], [37.3030757735902, -122.0036578787953], [37.30319652565784, -122.00392895972846], [37.30253238686181, -122.00037237792881], [37.30203212261569, -122.00070851828595], [37.300470931715324, -122.00081695066439], [37.303602756125215, -122.00529138920133], [37.3057218265671, -122.00381467287032]];
+
+
+            // Place each marker on the map
+            for( i = 0; i < markers.length; i++ ) {
+               var position = new google.maps.LatLng(markers[i][0], markers[i][1]);
+               var marker = new google.maps.Marker({
+                     position: position,
+                     map: map,
+               });
+
+               // Add info window to marker
+               google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                     return function() {
+                        infoWindow.setContent(infoWindowContent[i][0]);
+                        infoWindow.open(map, marker);
+                     }
+               })(marker, i));
+
+               // Center the map to fit all markers on the screen
+
+            }
+         }
+      </script>
+
+   </head>
+
+   <body onload = "loadMap()">
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" style="font-family: Alga Variable" href="home.html">WASP</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+
+      <li class="nav-item">
+        <a style="font-family: Karol" class="nav-link " href="{{url_for('feed')}}">Feed<span class="sr-only">current</span></a>
+      </li>
+      <li class="nav-item">
+        <a style="font-family: Karol" class="nav-link " href="{{url_for('search')}}">Search<span class="sr-only">current</span></a>
+      </li>
+      <li class="nav-item">
+        <a style="font-family: Karol" class="nav-link " href="{{url_for('post')}}">Post<span class="sr-only">current</span></a>
+      </li>
+
+      <li class="nav-item">
+        <a style="font-family: Karol" class="nav-link " style=font-family="Karol" href="{{url_for('security')}}">Incidents<span class="sr-only">current</span></a>
+      </li>
+
+      <li class="nav-item">
+        <a style="font-family: Karol" class="nav-link " href="{{url_for('profile')}}">My Profile<span class="sr-only">current</span></a>
+      </li>
+
+    </ul>
+  </div>
+</nav>
+
+  <h1 style="text-align:center;margin-top:3%;font-size:100px">
+    <p style="font-family: Karol" class="text-secondary">Incident Reporting/Search</p>
+  </h1>
+<div style="align:center, margin-left: 400px, padding: 40px">
+  <form action="/index" class="inline">
+  <br>
+
+    <div class="container">
+
+      <label for="title"><b>Address</b></label>
+      <input type="text" id="title" name="title" placeholder="Enter Address">
+
+      <button class="float-left submit-button" style="width:auto" type="submit">Submit</button>
+    </div>
+
+</form>
+
+</div>
+      <div id = "sample" style = "width:580px; height:400px;"></div>
+   </body>
+
+</html>

@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+
+        body{
+        /*
+background-image: url("https://cdn-cloudflare.pelfusion.com/wp-content/uploads/2012/12/christmas-winter-background-3.jpg");
+height: 100%;
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+background-attachment: fixed;
+}
+.content{
+background: #E3E4FA;
+width: 50%;
+padding: 40px;
+margin: 50px auto ;
+border-radius: 100px
+}
+  background-color: #F5F5F5;
+  font-family: 'Varela Round', sans-serif;
+}
+
+*{
+*/
+  padding: 0;
+  margin: 0;
+}
+
+nav {
+  background-color:#0797E3;
+  height: 40px;
+}
+
+
+li a{
+ text-decoration: none;
+ color: #ffffff;
+ line-height: 40px;
+ display: block;
+}
+
+li a:hover{
+  background-color: #41DAFF;
+  color: #ffffff;
+}
+
+.word {
+position: relative;
+text-algin: center;
+color: mintcream;
+}
+
+.place {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+h2 {
+  height: 8px;
+}
+
+.space {
+  line-height: 1.75;
+}
+
+.padding{
+background: #E3E4FA;
+width: 50%;
+padding: 40px;
+margin: 100px auto ;
+border-radius: 50px
+}
+body {font-family: Arial, Helvetica, sans-serif;}
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+/* Set a style for all buttons */
+button {
+  background-color: #04AA6D;
+  color: white;
+  padding: 14px 20px;
+  margin: 200px 100px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+  width: auto;
+  padding: 10px 18px;
+  background-color: #f44336;
+}
+
+/* Center the image and position the close button */
+.imgcontainer {
+  text-align: center;
+  margin: 200px 0 200px 0;
+  position: relative;
+}
+
+img.avatar {
+  width: 40%;
+  border-radius: 50%;
+}
+
+.container {
+  padding: 16px;
+}
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 300;
+  top: 100;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  padding-top: 60px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button (x) */
+.close {
+  position: absolute;
+  right: 300px;
+  top: 100;
+  color: #000;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: red;
+  cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)}
+  to {-webkit-transform: scale(1)}
+}
+
+@keyframes animatezoom {
+  from {transform: scale(0)}
+  to {transform: scale(1)}
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+     display: block;
+     float: none;
+  }
+  .cancelbtn {
+     width: 100%;
+  }
+}
+</style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Register</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  </head>
+  <body>
+
+    <script src="{{url_for('static', filename='script.js')}}"></script>
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" style="font-family: Alga Variable" href="home.html">WASP</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+
+      <li class="nav-item">
+        <a style="font-family: Karol" class="nav-link " href="{{url_for('feed')}}">Feed<span class="sr-only">current</span></a>
+      </li>
+      <li class="nav-item">
+        <a style="font-family: Karol" class="nav-link " href="{{url_for('search')}}">Search<span class="sr-only">current</span></a>
+      </li>
+      <li class="nav-item">
+        <a style="font-family: Karol" class="nav-link " href="{{url_for('post')}}">Post<span class="sr-only">current</span></a>
+      </li>
+
+      <li class="nav-item">
+        <a style="font-family: Karol" class="nav-link " style=font-family="Karol" href="{{url_for('security')}}">Incidents<span class="sr-only">current</span></a>
+      </li>
+
+      <li class="nav-item">
+        <a style="font-family: Karol" class="nav-link " href="{{url_for('profile')}}">My Profile<span class="sr-only">current</span></a>
+      </li>
+
+    </ul>
+  </div>
+</nav>
+
+
+<!--
+
+<label for="firstname">Attraction name:</label>
+<input type="text" id="firstname" name="fname" placeholder="firstname">
+<button type="submit">Login</button>
+</form>-->
+    <!--
+<div id="app-cover">
+  <div id="app">
+
+      <div id="f-element">
+        <div id="inp-cover"><input type="text" name="fname" placeholder="Type something to search ..." autocomplete="off" ></div>
+      </div>
+      <button type="submit" class="shadow"><i class="fas fa-search"></i></button>
+    </form>
+  </div>
+  <div id="layer" title="Click the blue area to hide the form"></div>
+  <div id="init"></div>
+</div>
+-->
+
+<!--
+<div class = "row" style = "margin-top:60px;margin-left:40px">
+<div class="card col-sm-3" style="margin-left:80px; margin-right: 60px;height:60%">
+  <img src="images/cardlogin.svg" class="card-img-top" alt="..." style = "margin-top:38px">
+  <div class="card-body">
+    <div style = "margin-top:20px"></div>
+    <h5 class="card-title">Log-in/Registration</h5>
+    <p class="card-text">Upon creating an account, users' responses to the forms will be stored in a database. Registration consists of four steps, including the user's first and last name, e-mail address and phone number, birthdate, username, and password. </p>
+    <a href="login.html" class="btn btn-primary">Log in</a>
+    <a href="signUp.html" class="btn btn-secondary">Registration</a>
+</div>
+</div>
+<div class="card col-sm-3" style= "margin-right:60px;height:60%">
+  <img src="images/carddash.svg" class="card-img-top" alt="..." style = "margin-top:32px">
+  <div class="card-body">
+    <h5 class="card-title">Classes/Pods/Temperature</h5>
+    <p class="card-text">After signing in, users can create pods by inputting the names and grade of their fellow classmates/groupmates into a form. If students wish to travel to each other's houses, mainting social distancing, of course, everyone will be required to log their temperatures. The entire pod's temperatures will be put on display on the dashboard. Additionally, students  can  deliver information amongst each other by writing the main class focus. Users can also fill out  a to-do form for students to log the activities  they need to finish. All the data will be stored and saved. </p>
+    <a href="dashboard.html" class="btn btn-primary">Dashboard</a>
+</div>
+</div>
+<div class="card col-sm-3" style= "margin-right:60px ">
+  <img src="images/cardtutor.svg" class="card-img-top" alt="..." style = "height:200px;margin-top:30px">
+  <div class="card-body">
+    <h5 class="card-title">Find a Tutor</h5>
+    <p class="card-text">steps here</p>
+    <a href="#" class="btn btn-primary">Tutors</a>
+</div>
+</div>
+-->
+<!--<div class="content">-->
+
+  <h1 style="text-align:center;margin-top:3%;font-size:100px">
+    <p style="font-family: Karol" class="text-secondary">Search</p>
+  </h1>
+<div style="align:center, margin-left: 20px, padding: 40px">
+  <br>
+
+    <div class="container">
+      <form  class="inline" action = "{{url_for('searching')}}" method ="post">
+      <input type="text" class="searchTerm" name="fname" placeholder="What are you looking for?" style="text-align:center; margin:center">
+      <button class="float-left submit-button" type="submit">Search</button>
+</form>
+    </div>
+
+</div>
+
+
+<div  style = "margin-left: auto;margin-right:auto;margin-top:40px;width:80%" >
+    {% for row in rows %}
+<div class="jumbotron">
+  <h1 class="display-4">
+  <text y="40">{{row['title']}}</text>
+  </h1>
+  <p class="lead">ID:{{row['postID']}}</p>
+  <hr class="my-4">
+  <p>{{row["content"]}}</p>
+
+</div>
+  {% endfor %}
+</div>
+
+<!--</div>-->
+
+</body>
+
+</html>
