@@ -30,7 +30,7 @@ def openAI(userinp):
         temperature = 0.5,
     )
 
-    rating = completion.choices[0].text #0 and 1 crap
+    rating = completion.choices[0].text #0 and 1 
 
     return int(rating)
 
@@ -38,8 +38,8 @@ def openAI(userinp):
 from twilio.rest import Client
 
 def twillioTOADMIN(userinp, rating):
-    accountSID = "AC0828dfa24008998a6a4eaa3bc63369f6"
-    authTOKEN  = "3112b9026301a6b8efb7e5993396c68e"
+    accountSID = "yourSID"
+    authTOKEN  = "yourTOKEN"
 
     client = Client(accountSID, authTOKEN)
 
@@ -48,19 +48,19 @@ def twillioTOADMIN(userinp, rating):
     elif "1" in rating: #urgent (rating by chatGPT)
         ret = "ALERT: A student has posted the following message: " + userinp + ". We have flagged this message as URGENT. Please log into WASP."
 
-    message = client.messages.create(body=ret + "", from_="+18884921334", to="+16692220280") #twillio number, faculty phone number
+    message = client.messages.create(body=ret + "", from_="+00000000000", to="+00000000000") #twillio number, faculty phone number
 
 
 def twillioTOALL(ret):
-    accountSID = "AC0828dfa24008998a6a4eaa3bc63369f6"
-    authTOKEN  = "3112b9026301a6b8efb7e5993396c68e"
+    accountSID = "yourSID"
+    authTOKEN  = "yourTOKEN"
 
     client = Client(accountSID, authTOKEN)
 
     #array of all the student's phone numbers
-    numbers = ["+16692220280", "+16692946744", "+16692876793"]
+    numbers = ["+00000000000", "+00000000000", "+00000000000"] #list of phone numbers
     for i in range(len(numbers)) :
-        message = client.messages.create(body=ret + "", from_="+18884921334", to=numbers[i]) #twillio number, all student phone numbers
+        message = client.messages.create(body=ret + "", from_="+00000000000", to=numbers[i]) #twillio number, all student phone numbers
 
 @app.route('/')
 def yes():
