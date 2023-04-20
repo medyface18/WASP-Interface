@@ -16,7 +16,7 @@ Session(app)
 import openai
 
 def openAI(userinp):
-    openai.api_key = "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"
+    openai.api_key = "" #Had to delete the API key
     model_engine = "text-davinci-003"
 
     prompt = "here is a situation that I am in right now: " + userinp + ". return only a 1 if this should be reported to the police or only a 0 if it shouldn't"
